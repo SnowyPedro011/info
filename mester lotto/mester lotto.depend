@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1709243326 source:d:\info\mester lotto\main.cpp
+	<iostream>
+	<time.h>
+	<stdlib.h>
+	<vector>
+
