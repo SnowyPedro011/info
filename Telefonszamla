@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+typedef struct
+{
+
+    int ko, kp, km, zo, zp,zm;
+    string  szam;
+} t_adat;
+bool mobil (t_adat szam);
+int perc (t_adat x);
+
+int main()
+{
+    t_adat hivas;
+    vector <t_adat> x;
+    cout << "kerek egy telefonszamot: ";
+    cin >> hivas.szam;
+    if (mobil(hivas))
+    {
+        cout <<"Mobil szam." << endl;
+    }
+    else
+    {
+        cout <<"vezetekes szam" << endl;
+        cout << "kerek egy hivas kezdeti es vegi idopontot" << endl;
+        cin >> hivas.ko;
+        cin >> hivas.kp;
+        cin >> hivas.km;
+        cin >> hivas.zo;
+        cin >> hivas.zp;
+        cin >> hivas.zm;
+        cout << "a hivas hossza: " << perc(hivas) <<" perc";
+
+
+    }
+    return 0;
+}
+bool mobil(t_adat szam)
+{
+    string s=szam.szam;
+    return (s[0]=='3' && s[1]=='9' || s[0]=='4' && s[1]=='1' || s[0]=='7's[1]=='1');
+}
+
+
+
+int perc (t_adat x)
+{
+    int ret, k, z;
+    k=x.ko*60*60+x.kp*60+x.km;
+    z=x.zo*60*60+x.zp*60+x.zm;
+    ret=(z-k)/60;
+    if((z-k)%60!=0)
+    {
+        ++ret;
+    }
+    return ret;
+}
