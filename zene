@@ -1,0 +1,80 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+typedef struct
+{
+    int ado, p, mp;
+    string azon;
+} t_adat;
+
+int main()
+{
+
+    vector <t_adat> x, x1, x2, x3;
+    t_adat tmp;
+    int n, i;
+    ifstream ifile;
+    ofstream ofile;
+    ifile.open("musor.txt");
+    ifile >> n;
+    for (i=0; i<n; ++i)
+    {
+        ifile >> tmp.ado >> tmp.p >> tmp.mp;
+        getline(ifile, tmp.azon);
+        x.push_back(tmp);
+        if (tmp.ado==1)
+            x1.push_back(tmp);
+        else if (tmp.ado==2)
+            x2.push_back(tmp);
+        else if (tmp.ado==3)
+            x3.push_back(tmp);
+    }
+    ifile.close();
+    /// 2. feladat
+    cout <<   "1. csatorna " << x1.size()<< "   2. csatorna " << x2.size() << "   3. csatorna "<< x3.size() << endl;
+
+
+    /// 3. feladat
+    int pos=0, pos1=0;
+    string s;
+
+    for (i=0; i<x1.size(); ++i)
+    {
+        s=x1[i].azon;
+        pos =s.find(":");
+    }
+    for (i=x1.size(); i>0; --i)
+    {
+        pos1 =s.find(":");
+    }
+    cout << pos << " " <<pos1 << endl;
+
+    int o=0,p=0,mp=0;
+
+    for (i=pos-1; i<pos1; ++i)
+    {
+        mp=+t_adat.mp;
+        p=+t_adat.p;
+    }
+    
+    for (i=0; i<n; ++i)
+    {
+        
+    }
+    
+    ///4. feladat
+
+
+
+
+    return 0;
+
+}
+void f(int i)
+{
+    cout << endl;
+    cout << i << ". feladat:" << endl;
+}
