@@ -9,21 +9,25 @@ typedef struct
     int ado, p, mp;
     string azon;
 } t_adat;
-
+void f(int i);
+bool eric(string s);
+int hossz(t_adat x);
 int main()
 {
 
     vector <t_adat> x, x1, x2, x3;
     t_adat tmp;
     int n, i;
+    char c;
     ifstream ifile;
     ofstream ofile;
     ifile.open("musor.txt");
     ifile >> n;
     for (i=0; i<n; ++i)
     {
-        ifile >> tmp.ado >> tmp.p >> tmp.mp;
+        ifile >> tmp.ado >> tmp.p >> tmp.mp >> c;
         getline(ifile, tmp.azon);
+        tmp.azon=c+tmp.azon;
         x.push_back(tmp);
         if (tmp.ado==1)
             x1.push_back(tmp);
@@ -38,13 +42,14 @@ int main()
 
 
     /// 3. feladat
-    int pos=0, pos1=0;
+    /*int pos=0, pos1=0;
     string s;
 
     for (i=0; i<x1.size(); ++i)
     {
         s=x1[i].azon;
-        pos =s.find(":");
+       if( s.find("Eric Clapton")==0);
+            pos=i;
     }
     for (i=x1.size(); i>0; --i)
     {
@@ -59,12 +64,27 @@ int main()
         mp=+t_adat.mp;
         p=+t_adat.p;
     }
-    
-    for (i=0; i<n; ++i)
+   */ 
+    //  for (i=0; i<n; ++i)
+
+    ///3. feladat b.
+    int e,u,ido;
+    i=0;
+    while (i<x1.size() && !eric(x1[i].azon))
+        ++i;
+    if (i<x1.size())
     {
-        
+        e=i;
+        i=x1.size()-1;
+        while (!eric(x1[i].azon))
+            --i;
+        u=i;
+        ido=ido+hossz(x1[i]);
+
+        cout << ido << endl;
     }
-    
+    else
+        cout << "nincs Eric Clapton az 1. adon" << endl;
     ///4. feladat
 
 
@@ -77,4 +97,13 @@ void f(int i)
 {
     cout << endl;
     cout << i << ". feladat:" << endl;
+}
+
+bool eric(string s)
+{
+    return s.substr(0,12)=="Eric Clapton";
+}
+int hossz(t_adat x)
+{
+    return x.p*60+x.mp;
 }
