@@ -11,6 +11,7 @@ typedef struct
 } t_adat;
 void f(int i);
 bool eric(string s);
+bool omega(string s);
 int hossz(t_adat x);
 int main()
 {
@@ -64,30 +65,103 @@ int main()
         mp=+t_adat.mp;
         p=+t_adat.p;
     }
-   */ 
+    */
     //  for (i=0; i<n; ++i)
 
-    ///3. feladat b.
-    int e,u,ido;
-    i=0;
-    while (i<x1.size() && !eric(x1[i].azon))
-        ++i;
-    if (i<x1.size())
-    {
-        e=i;
-        i=x1.size()-1;
-        while (!eric(x1[i].azon))
-            --i;
-        u=i;
-        ido=ido+hossz(x1[i]);
+    f(3);
 
-        cout << ido << endl;
+    int e, u, ido = 0;
+    i = 0;
+    while (i < x1.size() && !eric(x1[i].azon))
+    {
+        ++i;
+    }
+    if (i < x1.size())
+    {
+        e = i;
+        i = x1.size()-1;
+        while (i>=0 && !eric(x1[i].azon))
+        {
+            --i;
+        }
+        u=i;
+
+        for (int j=e; j<=u; ++j)
+        {
+            ido+=hossz(x1[j]);
+        }
+        //cout << ido << endl;
+        e=ido/(60*60);
+        ido=ido%(60*60);
+        u=ido/60;
+        ido=ido%60;
+
+        cout << e << ":" << u << ":" << ido << endl;
+
+
     }
     else
+    {
         cout << "nincs Eric Clapton az 1. adon" << endl;
-    ///4. feladat
+    }
 
 
+
+    f(4); ///4. feladat
+
+    int ido1=0, ido2=0, ido3=0;
+    int z1=0, z2=0, z3=0;
+    i = 0;
+    while (i < x.size() && !omega(x[i].azon))
+    {
+
+        if (x[i].ado==3)
+        {
+        ido1=+(x[i].mp+x[i].p*60);
+        ++z3;
+        }
+
+        else if (x[i].ado==2)
+        {
+        ido2=+(x[i].mp+x[i].p*60);
+            ++z2;
+            cout << z2 << endl;
+        }
+        else if (x[i].ado==1)
+        {
+        ido3=+(x[i].mp+x[i].p*60);
+        ++z1;
+
+
+        }
+         ++i;
+    }
+
+
+cout << x2.size() << " " << z2 << endl;
+
+   cout << z1 << " "<< z2 << " " << z3 << endl;
+    cout << x[i].ado << "-as ado: " << x[i].azon << endl;
+    cout << x2[z2].ado << "-as ado: " << x2[z2].azon << endl;
+    cout << x1[z1].ado << "-as ado: " << x1[z1].azon << endl;
+
+    /* for (int j=0; j<x2.size(); ++j)
+         {
+             ido2+=hossz(x2[j]);
+         }
+         for (int j=0; j<x3.size(); ++j)
+         {
+             ido3+=hossz(x3[j]);
+         }
+         for (int j=0; j<x1.size(); ++j)
+         {
+             ido1+=hossz(x1[j]);
+         }
+*/
+
+     cout << ido1 << endl;
+     cout << ido2 << endl;
+     cout << ido3 << endl;
 
 
     return 0;
@@ -106,4 +180,8 @@ bool eric(string s)
 int hossz(t_adat x)
 {
     return x.p*60+x.mp;
+}
+bool omega(string s)
+{
+    return s.substr(0,13)=="Omega:Legenda";
 }
