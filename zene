@@ -185,3 +185,143 @@ bool omega(string s)
 {
     return s.substr(0,13)=="Omega:Legenda";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+typedef struct
+{
+    int ado, p, mp;
+    string azon;
+} t_adat;
+void f(int i);
+bool eric(string s);
+int hossz(t_adat x);
+int main()
+{
+
+    vector <t_adat> x, x1, x2, x3;
+    t_adat tmp;
+    int n, i;
+    char c;
+    ifstream ifile;
+    ofstream ofile;
+    ifile.open("musor.txt");
+    ifile >> n;
+    for (i=0; i<n; ++i)
+    {
+        ifile >> tmp.ado >> tmp.p >> tmp.mp >> c;
+        getline(ifile, tmp.azon);
+        tmp.azon=c+tmp.azon;
+        x.push_back(tmp);
+        if (tmp.ado==1)
+            x1.push_back(tmp);
+        else if (tmp.ado==2)
+            x2.push_back(tmp);
+        else if (tmp.ado==3)
+            x3.push_back(tmp);
+    }
+    ifile.close();
+    /// 2. feladat
+    cout <<   "1. csatorna " << x1.size()<< "   2. csatorna " << x2.size() << "   3. csatorna "<< x3.size() << endl;
+
+
+    /// 3. feladat
+    /*int pos=0, pos1=0;
+    string s;
+
+    for (i=0; i<x1.size(); ++i)
+    {
+        s=x1[i].azon;
+       if( s.find("Eric Clapton")==0);
+            pos=i;
+    }
+    for (i=x1.size(); i>0; --i)
+    {
+        pos1 =s.find(":");
+    }
+    cout << pos << " " <<pos1 << endl;
+
+    int o=0,p=0,mp=0;
+
+    for (i=pos-1; i<pos1; ++i)
+    {
+        mp=+t_adat.mp;
+        p=+t_adat.p;
+    }
+   */
+    //  for (i=0; i<n; ++i)
+
+    ///3. feladat b.
+    int e,u,ido;
+    i=0;
+    while (i<x1.size() && !eric(x1[i].azon))
+        ++i;
+    if (i<x1.size())
+    {
+        e=i;
+        i=x1.size()-1;
+        while (!eric(x1[i].azon))
+            --i;
+        u=i;
+        ido=ido+hossz(x1[i]);
+
+        cout << ido << endl;
+    }
+    else
+        cout << "nincs Eric Clapton az 1. adon" << endl;
+    ///4. feladat
+int omegado;
+i=0;
+while (i<n && !(x[i].azon=="Omega:Legenda"))
+{
+    ++i;
+    if (i<n)
+    {
+        i=0;
+        while (!(ado[omegado][i].azon)=="Omega:Legenda"))
+        {
+            (omega+=hossz(ado[omegado][i]);
+            ++i;
+        }
+    }
+        else
+        {
+            cout << "nincs Omega:Legenda"
+            omegado=x[i].ado
+        }
+}
+
+    return 0;
+
+}
+void f(int i)
+{
+    cout << endl;
+    cout << i << ". feladat:" << endl;
+}
+
+bool eric(string s)
+{
+    return s.substr(0,12)=="Eric Clapton";
+}
+int hossz(t_adat x)
+{
+    return x.p*60+x.mp;
+}
